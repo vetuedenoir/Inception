@@ -1,9 +1,9 @@
-FROM debian:bookworm
+FROM debian:bullseye-slim
 
 RUN	apt update && apt install -y \
 		openssl	\
 		nginx	\
-		vim		\
+		vim	\
 		curl	\
 		systemctl
 
