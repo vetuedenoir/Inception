@@ -17,7 +17,7 @@ RUN	chmod -R 755 /var/lib/mysql/
 
 EXPOSE	3306
 
-COPY	./tools/dbscript.sh ./
+COPY	./tools/db_init_script.sh ./
 
-ENTRYPOINT ["bash", "./dbscript.sh"]
+ENTRYPOINT ["bash", "./db_init_script.sh"]
 
