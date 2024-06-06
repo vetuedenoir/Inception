@@ -1,6 +1,6 @@
 #!bin/bash
 
-service mysql start;
+service mariadb start;
 
 mysql -e "CREATE DATABASE IF NOT EXISTS \`${SQL_DATABASE}\';"
 mysql -e "CREATE USER IF NOT EXISTS \`${SQL_USER}\`@'localhost' INDENTIFIED BY '${SQL_PASSWORD}';"
