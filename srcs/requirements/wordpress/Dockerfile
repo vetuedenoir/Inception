@@ -26,8 +26,9 @@ RUN wget https://wordpress.org/latest.zip -P /var/www
 RUN cd /var/www && unzip latest.zip && rm -rf latest.zip && cd /
 RUN chown -R www-data:www-data /var/www/*
 
-RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -P /usr/local/bin/wp
-RUN chmod +x /usr/local/bin/wp/wp-cli.phar
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+	&& chmod +x wp-cli.phar \
+	&& mv wp-cli.phar /usr/local/bin/wp
 
 EXPOSE 9000
 

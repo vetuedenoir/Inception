@@ -1,4 +1,4 @@
-
+#version: '3.8'
 
 services:
   mariadb:
@@ -69,14 +69,14 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/home/killian/data/mariadb'
+      device: '/home/kscordel/data/mariadb'
 
   wordpress:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '/home/killian/data/wordpress'
+      device: '/home/kscordel/data/wordpress'
 
 networks:
   inception:
