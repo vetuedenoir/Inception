@@ -1,9 +1,8 @@
-From debian:bullseye-slim
+FROM debian:bullseye-slim
 
 RUN apt update && apt install -y \
 	wget \
-	php-fpm \
-	php-mysql \
+	php-fpm php-mysql \
 	mariadb-client \
 	unzip
 
@@ -32,9 +31,9 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 
 EXPOSE 9000
 
-COPY conf/www.conf /etc/php/8.3/fpm/pool.d/www.conf
+COPY ./conf/www.conf /etc/php/8.3/fpm/pool.d/www.conf
 
-COPY tools/set_wordpress.sh ./set_wordpress.sh
+COPY ./tools/set_wordpress.sh ./
 RUN chmod +x ./set_wordpress.sh
 
 ENTRYPOINT ["bash", "./set_wordpress.sh"]
