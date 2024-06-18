@@ -4,7 +4,7 @@ RUN apt update && apt install -y \
 	wget \
 	php-fpm php-mysql \
 	mariadb-client \
-	unzip
+	default-mysql-client
 
 RUN	apt-get update && apt-get install -y gnupg2
 RUN  apt install -y \
@@ -21,9 +21,10 @@ RUN apt install php8.3 -y
 
 RUN apt upgrade -y
 
-RUN wget https://wordpress.org/latest.zip -P /var/www
-RUN cd /var/www && unzip latest.zip && rm -rf latest.zip && cd /
+RUN wget https://wordpress.org/latest.tar.gz -P /var/www/html
+RUN cd /var/www/html && tar -xzvf && rm -rf latest.tar.gz && cd /
 RUN chown -R www-data:www-data /var/www/*
+RUN chmod -R 755 /var/www/*
 
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
 	&& chmod +x wp-cli.phar \

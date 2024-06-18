@@ -1,7 +1,6 @@
 FROM debian:bullseye-slim
 
 RUN	apt update && apt install -y \
-	systemctl \
 	mariadb-server \
 	mariadb-client \
 	procps
@@ -21,4 +20,3 @@ COPY	./tools/db_init_script.sh ./
 RUN		chmod +x ./db_init_script.sh
 
 ENTRYPOINT ["bash", "./db_init_script.sh"]
-
