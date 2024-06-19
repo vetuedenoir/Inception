@@ -36,7 +36,7 @@ if [ ! -d /run/php ]; then
 fi
 
 # start the PHP FastCGI Process Manager (FPM) for PHP version 7.3 in the foreground
-exec /usr/sbin/php-fpm8.3 -F -R
+exec /usr/sbin/php-fpm7.3 -F -R
 
 
 
