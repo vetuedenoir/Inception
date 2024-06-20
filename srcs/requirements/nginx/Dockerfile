@@ -1,6 +1,6 @@
 FROM debian:bullseye-slim
 
-RUN	apt-get update && apt install -y \
+RUN	apt-get update && apt-get install -y \
 		nginx	\
 		curl
 #		vim	\
