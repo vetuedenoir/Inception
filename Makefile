@@ -1,8 +1,8 @@
 #lol
 
 all:
-	mkdir -p /home/kscordel/data/mariadb
-	mkdir -p /home/kscordel/data/wordpress
+	mkdir -p /home/$(USER)/data/mariadb
+	mkdir -p /home/$(USER)/data/wordpress
 	docker compose -f ./srcs/docker-compose.yml build
 	docker compose -f ./srcs/docker-compose.yml up -d
 
@@ -11,16 +11,17 @@ logs:
 	docker logs mariadb
 	docker logs nginx
 
-clean:
-	docker container stop nginx mariadb wordpress
-#	docker network rm inception
+stop:
+	docker compose -f srcs/docker-compose.yml down
 
-fclean: clean
-	sudo rm -rf /home/kscordel/data/mariadb/*
-	sudo rm -rf /home/kscordel/data/wordpress/*
+clean:
+	docker compose -f srcs/docker-compose.yml down --remove-orphans --rmi all
+
+fclean:
+	docker compose -f srcs/docker-compose.yml down -v --remove-orphans --rmi all
 	@docker system prune -af
-	docker volume rm srcs_mariadb
-	docker volume rm srcs_wordpress
+	sudo rm -rf /home/$(USER)/data/mariadb/*
+	sudo rm -rf /home/$(USER)/data/wordpress/*
 
 re: fclean all
 
