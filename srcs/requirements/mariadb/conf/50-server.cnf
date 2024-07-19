@@ -6,7 +6,6 @@ basedir		= /usr
 datadir		= /var/lib/mysql
 pid-file	= /var/run/mysqld/mysqld.pid
 socket		= /var/run/mysqld/mysqld.sock
-tmpdir		= /tmp
 skip_networking = off
 
 max_allowed_packet	= 64M

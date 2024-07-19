@@ -18,9 +18,9 @@ clean:
 fclean: clean
 	sudo rm -rf /home/kscordel/data/mariadb/*
 	sudo rm -rf /home/kscordel/data/wordpress/*
+	@docker system prune -af
 	docker volume rm srcs_mariadb
 	docker volume rm srcs_wordpress
-	@docker system prune -af
 
 re: fclean all
 
